@@ -1,0 +1,41 @@
+2025-04-08 21:47:38,843 - __main__ - INFO - Starting Flask application
+2025-04-08 21:47:39,666 - __main__ - INFO - Starting Flask application
+2025-04-08 21:47:50,025 - __main__ - INFO - Processing chatbot request: hi...
+2025-04-08 21:47:50,298 - __main__ - ERROR - Error getting chatbot response from Groq: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-04-08 21:49:18,004 - __main__ - INFO - Starting Flask application
+2025-04-08 21:49:29,944 - __main__ - INFO - Processing chatbot request: hi...
+2025-04-08 21:49:30,990 - __main__ - INFO - Successfully received chatbot response from Groq
+2025-04-08 21:50:18,270 - __main__ - INFO - Starting inventory analysis
+2025-04-08 21:50:18,465 - __main__ - INFO - Retrieved inventory data for 24 products
+2025-04-08 21:50:18,468 - __main__ - INFO - Requesting inventory analysis from Groq
+2025-04-08 21:50:19,921 - __main__ - INFO - Requesting transport route from trichy to nammakal
+2025-04-08 21:50:19,982 - __main__ - INFO - Successfully received inventory analysis from Groq
+2025-04-08 21:50:21,246 - __main__ - INFO - Successfully received transport route from Groq
+2025-04-09 12:10:25,546 - __main__ - INFO - Starting Flask application
+2025-04-09 12:10:26,804 - __main__ - INFO - Starting Flask application
+2025-04-09 12:10:35,929 - __main__ - INFO - Starting inventory analysis
+2025-04-09 12:10:36,378 - __main__ - INFO - Retrieved inventory data for 24 products
+2025-04-09 12:10:36,381 - __main__ - INFO - Requesting inventory analysis from Groq
+2025-04-09 12:10:40,476 - __main__ - ERROR - Error getting inventory analysis from Groq: Connection error.
+2025-04-09 12:11:27,350 - __main__ - INFO - Starting Flask application
+2025-04-09 12:11:28,513 - __main__ - INFO - Starting Flask application
+2025-04-09 12:11:35,861 - __main__ - INFO - Starting inventory analysis
+2025-04-09 12:11:35,957 - __main__ - INFO - Retrieved inventory data for 24 products
+2025-04-09 12:11:35,958 - __main__ - INFO - Requesting inventory analysis from Groq
+2025-04-09 12:11:38,274 - __main__ - INFO - Successfully received inventory analysis from Groq
+2025-04-09 12:13:55,212 - __main__ - INFO - Starting Flask application
+2025-04-09 12:13:56,848 - __main__ - INFO - Starting Flask application
+2025-04-09 12:14:08,094 - __main__ - INFO - Updating stock for product ID watch with quantity 5
+2025-04-09 12:14:08,416 - __main__ - INFO - Updated existing stock for product ID watch to 165
+2025-04-09 12:14:16,221 - __main__ - INFO - Recording sale for product ID headphone with quantity 2
+2025-04-09 12:14:16,269 - __main__ - INFO - Sales data updated and stock reduced for product ID headphone
+2025-04-09 12:14:21,054 - __main__ - INFO - Starting inventory analysis
+2025-04-09 12:14:21,081 - __main__ - INFO - Retrieved inventory data for 24 products
+2025-04-09 12:14:21,087 - __main__ - INFO - Requesting inventory analysis from Groq
+2025-04-09 12:14:23,141 - __main__ - INFO - Successfully received inventory analysis from Groq
+2025-04-09 12:15:25,444 - __main__ - INFO - Requesting transport route from trichy to namakkal
+2025-04-09 12:15:27,033 - __main__ - INFO - Successfully received transport route from Groq
+2025-04-09 12:18:45,365 - __main__ - INFO - Processing chatbot request: sales strategy...
+2025-04-09 12:18:47,640 - __main__ - INFO - Successfully received chatbot response from Groq
+2025-04-09 12:19:21,788 - __main__ - INFO - Processing chatbot request: what is cost watch ...
+2025-04-09 12:19:23,067 - __main__ - INFO - Successfully received chatbot response from Groq

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="static/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Inventory Management System</h1>
+      </header>
+      <div class="content">
+        <div class="main-section">
+          <div class="section">
+            <h2>Update Stock</h2>
+            <form id="stockForm">
+              <input type="text" id="stockProductId" placeholder="Product ID" required />
+              <input type="number" id="stockQuantity" placeholder="Quantity" required />
+              <button type="submit">Update Stock</button>
+            </form>
+          </div>
+
+          <div class="section">
+            <h2>Update Sales</h2>
+            <form id="salesForm">
+              <input type="text" id="salesProductId" placeholder="Product ID" required />
+              <input type="number" id="salesQuantity" placeholder="Quantity" required />
+              <button type="submit">Update Sales</button>
+            </form>
+          </div>
+
+          <div class="section">
+            <h2>Analyze Inventory</h2>
+            <button id="analyzeButton">Analyze</button>
+            <div id="results"></div>
+          </div>
+
+          <div class="transportation-section">
+            <h2>Transportation Management</h2>
+            <form id="transportForm">
+              <input type="text" id="startPoint" placeholder="Starting Point" required />
+              <input type="text" id="destination" placeholder="Destination" required />
+              <button type="submit">Find Route</button>
+            </form>
+            <div id="routeResults"></div>
+            <map name="routeMap" id="routeMap"></map>
+          </div>
+        </div>
+
+        <div class="chatbot-section">
+          <h2>Chatbot</h2>
+          <div id="chatbox"></div>
+          <form id="chatForm">
+            <input type="text" id="userInput" placeholder="Ask a question..." required />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#stockForm").submit(function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "/update_stock",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              product_id: $("#stockProductId").val(),
+              quantity: parseInt($("#stockQuantity").val()),
+            }),
+            success: function (response) {
+              alert(response.message);
+            },
+            error: function (xhr) {
+              alert("Error: " + xhr.responseJSON.error);
+            },
+          });
+        });
+
+        $("#salesForm").submit(function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "/update_sales",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              product_id: $("#salesProductId").val(),
+              quantity: parseInt($("#salesQuantity").val()),
+            }),
+            success: function (response) {
+              alert(response.message);
+            },
+            error: function (xhr) {
+              alert("Error: " + xhr.responseJSON.error);
+            },
+          });
+        });
+
+        $("#analyzeButton").click(function () {
+          $.ajax({
+            url: "/analyze_inventory",
+            type: "GET",
+            success: function (response) {
+              $("#results").html(`<div class="markdown-content">${response.analysis}</div>`);
+            },
+            error: function (xhr) {
+              $("#results").html(`<p class="error">Error: ${xhr.responseJSON.error}</p>`);
+            },
+          });
+        });
+
+        $("#chatForm").submit(function (e) {
+          e.preventDefault();
+          let userMessage = $("#userInput").val();
+          $("#chatbox").append(`<p class="user-message">${userMessage}</p>`);
+          $.ajax({
+            url: "/chatbot",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ message: userMessage }),
+            success: function (response) {
+              $("#chatbox").append(`<div class="markdown-content">${response.response}</div>`);
+              $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            },
+            error: function () {
+              $("#chatbox").append(`<p class="bot-message">Sorry, an error occurred.</p>`);
+            },
+          });
+          $("#userInput").val("");
+        });
+
+        $("#transportForm").submit(function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "/transport_route",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              start: $("#startPoint").val(),
+              destination: $("#destination").val(),
+            }),
+            success: function (response) {
+              $("#routeResults").html(`<p>${response.route}</p><p>${response.reason}</p>`);
+            },
+            error: function (xhr) {
+              alert("Error: " + xhr.responseJSON.error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
